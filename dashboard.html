@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Passenger Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Passenger Ride Statistics</h2>
+  <canvas id="rideChart" width="600" height="300"></canvas>
+
+  <script>
+    // Paste the data you copied from Postman here
+    const dataFromAPI = [
+      {
+        "name": "Arvin",
+        "totalRides": 3,
+        "totalFare": 52.5,
+        "avgDistance": 11.2
+      },
+      
+    ];
+
+    const names = dataFromAPI.map(d => d.name);
+    const totalRides = dataFromAPI.map(d => d.totalRides);
+    const totalFare = dataFromAPI.map(d => d.totalFare);
+    const avgDistance = dataFromAPI.map(d => d.avgDistance);
+
+    const ctx = document.getElementById('rideChart').getContext('2d');
+    const rideChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: names,
+        datasets: [
+          {
+            label: 'Total Rides',
+            data: totalRides,
+            backgroundColor: 'rgba(75, 192, 192, 0.6)'
+          },
+          {
+            label: 'Total Fare',
+            data: totalFare,
+            backgroundColor: 'rgba(255, 99, 132, 0.6)'
+          },
+          {
+            label: 'Average Distance',
+            data: avgDistance,
+            backgroundColor: 'rgba(153, 102, 255, 0.6)'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: {
+            display: true,
+            text: 'Passenger Analytics Summary'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

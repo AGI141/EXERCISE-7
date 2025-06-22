@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "6856c311cc84f22fc3b6423b"
+  },
+  "name": "Arvin",
+  "totalRides": 1,
+  "totalFare": 20,
+  "avgDistance": 11
+}]
